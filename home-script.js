@@ -6,7 +6,7 @@ const portfolios = [
         bio: "Passionate about building web applications with modern technologies.",
         image: "./assets/images/profile-kaiden-carr.png",
         tags: ["JavaScript", "Python", "React", "HTML", "CSS"],
-        portfolioUrl: "portfolios/carrkaiden1212.html"
+        portfolioUrl: "/carrkaiden1212"
     },
     {
         name: "Antony Hallick",
@@ -14,7 +14,7 @@ const portfolios = [
         bio: "Professional with extensive experience across multiple industries including roofline products, aluminium manufacturing, and furniture.",
         image: "./assets/images/profile-antony-hallick.png",
         tags: ["Manufacturing", "Aluminium", "Technical", "Operations"],
-        portfolioUrl: "portfolios/Antony_Hallick.html"
+        portfolioUrl: "/Antony_Hallick"
     },
     {
         name: "Mason",
@@ -22,7 +22,7 @@ const portfolios = [
         bio: "Ensuring YOUR discord servers are what you need. Top Qualities, Cheap Prices. Specializing in community, design, department, and content creation.",
         image: "./assets/images/profile-mason.png",
         tags: ["Discord", "Design", "Community"],
-        portfolioUrl: "portfolios/Mason.html"
+        portfolioUrl: "/Mason"
     },
     {
         name: "Dudwig",
@@ -30,7 +30,7 @@ const portfolios = [
         bio: "Creative designer specializing in clothing design and Discord embeds with innovative design solutions.",
         image: "./assets/images/profile-dudwig.png",
         tags: ["Design", "Clothing", "Embeds"],
-        portfolioUrl: "portfolios/Dudwig.html"
+        portfolioUrl: "/Dudwig"
     },
     {
         name: "__nicow",
@@ -38,7 +38,7 @@ const portfolios = [
         bio: "This is your about me",
         image: "./assets/images/__nicow.webp",
         tags: ["Design", "Banners", "Discord"],
-        portfolioUrl: "portfolios/__nicow.html"
+        portfolioUrl: "/__nicow"
     },
     {
         name: "Leo Sicolo",
@@ -46,7 +46,7 @@ const portfolios = [
         bio: "Passionate about IT field and 3D printing. Experienced in IT work and camp counseling with relevant qualifications.",
         image: "./assets/images/profile-leo-sicolo.png",
         tags: ["IT", "3D Printing", "Technology"],
-        portfolioUrl: "portfolios/Leo_Sicolo.html"
+        portfolioUrl: "/Leo_Sicolo"
     },
     {
         name: "yescat",
@@ -54,7 +54,7 @@ const portfolios = [
         bio: "Design specialist with extensive experience moderating 5+ servers and building 2 successful Discord communities from the ground up.",
         image: "./assets/images/profile-yescat.png",
         tags: ["Discord", "Design", "Leadership"],
-        portfolioUrl: "portfolios/yescat.html"
+        portfolioUrl: "/yescat"
     },
     {
         name: "myfloweralla",
@@ -62,7 +62,7 @@ const portfolios = [
         bio: "I enjoy designing and experimenting with new things. Creating and discovering new possibilities is what motivates me the most.",
         image: "./assets/images/profile-myfloweralla.png",
         tags: ["Design", "Creative", "Discord"],
-        portfolioUrl: "portfolios/myfloweralla.html"
+        portfolioUrl: "/myfloweralla"
     },
     {
         name: "FluffyChick458",
@@ -70,7 +70,7 @@ const portfolios = [
         bio: "Experienced server owner and community manager with a proven track record of building and maintaining successful Discord communities.",
         image: "./assets/images/profile-fluffy.png",
         tags: ["Server Owner", "Management", "Community"],
-        portfolioUrl: "portfolios/FluffyChick458.html"
+        portfolioUrl: "/FluffyChick458"
     },
     {
         name: "denji",
@@ -78,7 +78,7 @@ const portfolios = [
         bio: "Anime edits, gaming montages, Minecraft server design, and Discord community management.",
         image: "./assets/images/denji.notfound.webp",
         tags: ["Video Editing", "Minecraft", "Discord", "Gaming"],
-        portfolioUrl: "portfolios/toxiqxprime.html"
+        portfolioUrl: "/toxiqxprime"
     }
 ];
 
