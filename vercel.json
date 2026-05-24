@@ -2,8 +2,13 @@
   "buildCommand": "",
   "outputDirectory": ".",
   "trailingSlash": false,
-  "cleanUrls": true,
+  "cleanUrls": false,
   "redirects": [
+    {
+      "source": "/Carrkaiden1212",
+      "destination": "/carrkaiden1212",
+      "permanent": true
+    },
     {
       "source": "/portfolios/:slug.html",
       "destination": "/:slug",
