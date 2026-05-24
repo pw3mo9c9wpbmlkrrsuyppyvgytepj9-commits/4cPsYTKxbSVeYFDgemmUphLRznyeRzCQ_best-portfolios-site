@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - myfloweralla</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #9370DB;
+            --bg-color: #4169E1;
+            --accent-color: #00008B;
+            --text-color: #9370DB;
+            --light-bg: #4169E1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            background-color: var(--accent-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #FFD700;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--accent-color) 100%);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+        }
+
+        .highlight {
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(147, 112, 219, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-color);
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            justify-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Projects Section */
+        .projects {
+            background-color: var(--accent-color);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: rgba(147, 112, 219, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--text-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(147, 112, 219, 0.4);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-color);
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid var(--text-color);
+            border-radius: 5px;
+            font-family: inherit;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(147, 112, 219, 0.5);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .social-icon {
+            color: var(--text-color);
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: transform 0.3s, color 0.3s;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #FFD700;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--accent-color);
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-color);
+        }
+
+        /* Server Image Section */
+        .server-showcase {
+            background-color: var(--accent-color);
+            text-align: center;
+        }
+
+        .server-image-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .server-image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 3px solid var(--text-color);
+        }
+
+        .discord-invite-btn {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: #5865F2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .discord-invite-btn:hover {
+            background-color: #4752C4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="../index.html" style="text-decoration: none; color: inherit;">portfolios</a></div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#server" class="nav-link">Server</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hello, I'm <span class="highlight">byflorewalla_12345</span></h1>
+            <p class="hero-subtitle">Designer & Creative Experimenter</p>
+            <div class="hero-buttons">
+                <a href="#about" class="btn btn-primary">Learn More</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I enjoy designing and experimenting with new things. I like exploring creative ideas and discovering new possibilities through trial and error.</p>
+                    <p>I really enjoy designing and exploring creative ideas. I like experimenting with new things, learning through trial and error, and pushing myself to try different approaches. Creating and discovering new possibilities is what motivates me the most.</p>
+                    <p>Whether it's visual design, creative projects, or trying unconventional approaches, I'm dedicated to bringing fresh perspectives and innovative solutions to every endeavor.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Server Showcase Section -->
+    <section id="server" class="server-showcase">
+        <div class="container">
+            <h2 class="section-title">My Server</h2>
+            <p class="section-subtitle">Check out my Discord server community!</p>
+            <div class="server-image-container">
+                <img src="../assets/images/myfloweralla-server.png" alt="My Discord Server" onerror="this.style.display='none'">
+            </div>
+            <a href="https://discord.gg/pcJsAVSCNK" class="discord-invite-btn" target="_blank">
+                <i class="fab fa-discord"></i> Join My Server
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Feel free to reach out for collaborations or creative projects!</p>
+            
+            <form class="contact-form" action="https://formspree.io/f/xjggbbkw" method="POST">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Your Name" required="">
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Your Email" required="">
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Your Message" rows="5" required=""></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+
+            <div class="social-links">
+                <a href="https://discord.gg/pcJsAVSCNK" class="social-icon" title="Discord"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 myfloweralla. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

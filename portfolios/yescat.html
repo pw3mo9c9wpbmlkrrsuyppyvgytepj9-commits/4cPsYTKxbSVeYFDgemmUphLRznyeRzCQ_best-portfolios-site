@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - yescat</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7C3AED;
+            --primary-dark: #6D28D9;
+            --secondary-color: #A78BFA;
+            --bg-light: #E9D5FF;
+            --bg-white: #F3E8FF;
+            --border-color: #A78BFA;
+            --text-dark: #000000;
+            --text-light: #1F2937;
+        }
+
+        .hero {
+            background: linear-gradient(to bottom, #7C3AED, #E9D5FF, #A78BFA) !important;
+        }
+
+        .gallery-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-tab {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #A78BFA;
+            background: transparent;
+            color: #000000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .gallery-tab:hover {
+            background: #A78BFA;
+            color: #000000;
+        }
+
+        .gallery-tab.active {
+            background: #A78BFA;
+            color: #FFFFFF;
+        }
+
+        .gallery-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .gallery-carousel-container {
+            position: relative;
+            overflow: hidden;
+            background: #E9D5FF;
+            border: 2px solid #A78BFA;
+        }
+
+        .gallery-carousel-inner {
+            display: flex;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .gallery-content {
+            display: none !important;
+        }
+
+        .gallery-content.active {
+            display: flex !important;
+            gap: 0 !important;
+            grid-template-columns: none !important;
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: #E9D5FF;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #A78BFA;
+            width: 300px;
+            min-width: 300px;
+            height: 300px;
+        }
+
+        .gallery-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #7C3AED;
+            color: #FFFFFF;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: background 0.3s ease;
+            font-size: 1.5rem;
+        }
+
+        .carousel-arrow:hover {
+            background: #6D28D9;
+        }
+
+        .carousel-arrow.left {
+            left: 1rem;
+        }
+
+        .carousel-arrow.right {
+            right: 1rem;
+        }
+
+        .contact-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            width: 100%;
+        }
+
+        .social-icon {
+            margin-top: 6px;
+        }
+
+        .experience-card {
+            color: #000000;
+        }
+
+        .experience-card h3,
+        .experience-card p {
+            color: #000000;
+        }
+
+        .experience-description {
+            color: #1F2937 !important;
+        }
+
+        .about-text p {
+            color: #000000 !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="../index.html" style="text-decoration: none; color: inherit;">Portfolios</a></div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#experiences" class="nav-link">Experiences</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Hello, I'm <span class="highlight">yescat</span></h1>
+            <p class="hero-subtitle">Design Specialist</p>
+            <div class="hero-buttons">
+                <a href="#gallery" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Scroll to explore</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>With extensive experience moderating 5+ servers and building 2 successful Discord communities from the ground up, I bring proven leadership expertise and high-level server management skills to every project.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Servers Moderated</p>
+                        </div>
+                        <div class="stat">
+                            <h3>2</h3>
+                            <p>Communities Built</p>
+                        </div>
+                        <div class="stat">
+                            <h3>Expert</h3>
+                            <p>Leadership</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="projects">
+        <div class="container">
+            <h2 class="section-title">Gallery</h2>
+            
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" data-tab="discord">Discord</button>
+                <button class="gallery-tab" data-tab="banners">Banners</button>
+            </div>
+
+            <div class="gallery-carousel">
+                <div class="gallery-carousel-container">
+                    <div class="gallery-carousel-inner" id="carouselInner">
+                        <div class="gallery-content active" data-content="discord">
+                            <div class="gallery-item"><img src="../assets/images/yescat-work-discord1.png" alt="Discord Design 1"></div>
+                            <div class="gallery-item"><img src="../assets/images/yescat-work-discord2.png" alt="Discord Design 2"></div>
+                            <div class="gallery-item"><img src="../assets/images/yescat-work-discord3.png" alt="Discord Design 3"></div>
+                            <div class="gallery-item"><img src="../assets/images/yescat-work-discord4.png" alt="Discord Design 4"></div>
+                        </div>
+
+                        <div class="gallery-content" data-content="banners">
+                            <div class="gallery-item"><img src="../assets/images/yescat-work-banner1.png" alt="Banner Design 1"></div>
+                        </div>
+                    </div>
+                    <button class="carousel-arrow left" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-arrow right" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="experiences">
+        <div class="container">
+            <h2 class="section-title">Experiences</h2>
+            <div class="experiences-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>LaRP</h3>
+                            <p class="experience-company">Supervisor</p>
+                        </div>
+                        <span class="experience-date">2025</span>
+                    </div>
+                    <p class="experience-description">Served as Supervisor in LaRP community.</p>
+                    <div class="experience-footer">
+                        <div class="experience-tags">
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Moderation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Bounty County</h3>
+                            <p class="experience-company">Sr Admin</p>
+                        </div>
+                        <span class="experience-date">2025</span>
+                    </div>
+                    <p class="experience-description">Senior Administrator for Bounty County server.</p>
+                    <div class="experience-footer">
+                        <div class="experience-tags">
+                            <span class="tag">Administration</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>HR Border RP</h3>
+                            <p class="experience-company">Sr Mod</p>
+                        </div>
+                        <span class="experience-date">2023</span>
+                    </div>
+                    <p class="experience-description">Senior Moderator for HR Border RP community.</p>
+                    <div class="experience-footer">
+                        <div class="experience-tags">
+                            <span class="tag">Moderation</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Alaska RP</h3>
+                            <p class="experience-company">Admin</p>
+                        </div>
+                        <span class="experience-date">2025</span>
+                    </div>
+                    <p class="experience-description">Administrator for Alaska RP server.</p>
+                    <div class="experience-footer">
+                        <div class="experience-tags">
+                            <span class="tag">Administration</span>
+                            <span class="tag">Moderation</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Fsrp</h3>
+                            <p class="experience-company">Management</p>
+                        </div>
+                        <span class="experience-date">2024</span>
+                    </div>
+                    <p class="experience-description">Management team member for Fsrp community.</p>
+                    <div class="experience-footer">
+                        <div class="experience-tags">
+                            <span class="tag">Management</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Feel free to reach out for design projects or collaborations!</p>
+            
+            <div class="contact-content">
+                <form class="contact-form" action="https://formspree.io/f/maqqynjz" method="POST">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025-2026 yescat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        document.querySelectorAll('.gallery-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const tabName = this.getAttribute('data-tab');
+                
+                document.querySelectorAll('.gallery-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.gallery-content').forEach(content => content.classList.remove('active'));
+                
+                this.classList.add('active');
+                document.querySelector(`[data-content="${tabName}"]`).classList.add('active');
+                currentIndex = 0;
+                updateCarousel();
+            });
+        });
+
+        function updateCarousel() {
+            const carousel = document.getElementById('carouselInner');
+            const offset = -currentIndex * 300;
+            carousel.style.transform = `translateX(${offset}px)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', function() {
+            const activeContent = document.querySelector('.gallery-content.active');
+            const totalImages = activeContent.querySelectorAll('.gallery-item').length;
+            currentIndex = (currentIndex + 1) % totalImages;
+            updateCarousel();
+        });
+
+        document.getElementById('prevBtn').addEventListener('click', function() {
+            const activeContent = document.querySelector('.gallery-content.active');
+            const totalImages = activeContent.querySelectorAll('.gallery-item').length;
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+            updateCarousel();
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

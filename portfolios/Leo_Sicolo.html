@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Leo Sicolo</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #d4af37;
+            --primary-dark: #b8941f;
+            --secondary-color: #ffffff;
+            --bg-light: #ffffff;
+            --bg-white: #f9f9f9;
+            --border-color: #d4af37;
+            --text-dark: #d4af37;
+            --text-light: #a0860a;
+        }
+
+        body {
+            background: #ffffff !important;
+            color: #d4af37 !important;
+        }
+
+        .navbar {
+            background: #ffffff !important;
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .nav-brand, .nav-link {
+            color: #d4af37 !important;
+        }
+
+        .hero {
+            background: #ffffff !important;
+            color: #d4af37 !important;
+        }
+
+        .hero-title, .hero-subtitle, .hero-scroll {
+            color: #d4af37 !important;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .profile-image-container {
+            text-align: center;
+        }
+
+        .profile-image-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 5px solid #d4af37;
+        }
+
+        .profile-image-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-section {
+            background: #ffffff;
+        }
+
+        .about-section h2 {
+            color: #d4af37 !important;
+        }
+
+        .about-text {
+            color: #d4af37 !important;
+        }
+
+        .about-text p {
+            color: #d4af37 !important;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .contact-item h4 {
+            color: #d4af37 !important;
+        }
+
+        .contact-item p {
+            color: #a0860a !important;
+        }
+
+        .qualifications-carousel {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .qualifications-grid {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .qualifications-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .qualifications-grid::-webkit-scrollbar-track {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 4px;
+        }
+
+        .qualifications-grid::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        .qualification-item {
+            min-width: 150px;
+            width: 150px;
+            aspect-ratio: 1;
+            border: 2px solid #d4af37;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: #f9f9f9;
+            flex-shrink: 0;
+        }
+
+        .carousel-arrow {
+            background: #d4af37;
+            color: #000;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+            transition: background 0.3s;
+        }
+
+        .carousel-arrow:hover {
+            background: #ffd700;
+        }
+
+        .carousel-arrow.left {
+            order: -1;
+        }
+
+        .carousel-arrow.right {
+            order: 1;
+        }
+
+        .qualification-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .section-title {
+            color: #d4af37 !important;
+        }
+
+        .contact-form input, .contact-form textarea {
+            background: #f9f9f9;
+            color: #d4af37 !important;
+            border: 2px solid #d4af37 !important;
+        }
+
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #a0860a !important;
+        }
+
+        .btn-primary {
+            background: #d4af37 !important;
+            color: #ffffff !important;
+        }
+
+        .btn-secondary {
+            border-color: #d4af37 !important;
+            color: #d4af37 !important;
+        }
+
+        .social-icon {
+            color: #d4af37 !important;
+        }
+
+        .footer {
+            background: #f9f9f9;
+            border-top: 2px solid #d4af37 !important;
+            color: #d4af37 !important;
+        }
+
+        @media (max-width: 768px) {
+            .profile-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-image-circle {
+                width: 250px;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="../index.html" style="text-decoration: none; color: inherit;">Portfolios</a></div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#qualifications" class="nav-link">Qualifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="profile-hero">
+                <div class="profile-image-container">
+                    <div class="profile-image-circle">
+                        <img src="../assets/images/profile-leo-sicolo.png" alt="Leo Sicolo">
+                    </div>
+                </div>
+                <div>
+                    <h1 class="hero-title">Leo Sicolo</h1>
+                    <p class="hero-subtitle">IT Professional & 3D Printing Enthusiast</p>
+                    <div class="hero-buttons">
+                        <a href="#qualifications" class="btn btn-primary">View My Qualifications</a>
+                        <a href="#contact" class="btn btn-secondary">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">A Bit About Me</h2>
+            <div class="about-text">
+                <p>Hello, I am Leo Sicolo. I am interested in the IT field and I also like to 3-D Print in my spare time.</p>
+                <p>I have had work experience in the IT Field and as a Camp Counselor. I have also gained qualifications through the years. If you have any concerns or enquiries, you can contact me below.</p>
+            </div>
+
+            <h3 style="color: #d4af37; margin-top: 2rem;">Contact Information</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4><i class="fas fa-phone"></i> Phone</h4>
+                    <p>+1 (551) 455 - 3845</p>
+                </div>
+                <div class="contact-item">
+                    <h4><i class="fas fa-envelope"></i> Email</h4>
+                    <p><a href="mailto:leosicolo44@gmail.com" style="color: #a0860a; text-decoration: none;">leosicolo44@gmail.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualifications Section -->
+    <section id="qualifications" class="projects">
+        <div class="container">
+            <h2 class="section-title">Qualifications</h2>
+            <div class="qualifications-carousel">
+                <button class="carousel-arrow left" id="prevQualBtn" onclick="scrollQualLeft()"><i class="fas fa-chevron-left"></i></button>
+                <div class="qualifications-grid" id="qualificationsGrid">
+                    <a href="../assets/leo-qualification-1.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 1</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-2.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 2</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-3.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 3</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-4.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 4</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-5.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 5</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-6.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 6</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-7.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 7</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-8.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 8</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-9.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 9</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-10.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 10</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-11.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 11</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-12.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 12</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-13.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 13</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-14.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 14</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-15.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 15</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-16.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 16</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-17.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 17</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-18.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 18</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-19.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 19</p>
+                        </div>
+                    </a>
+                    <a href="../assets/leo-qualification-20.pdf" target="_blank" class="qualification-item">
+                        <div style="text-align: center;">
+                            <i class="fas fa-file-pdf" style="font-size: 3rem; color: #d4af37;"></i>
+                            <p style="color: #d4af37; margin-top: 0.5rem;">Qualification 20</p>
+                        </div>
+                    </a>
+                </div>
+                <button class="carousel-arrow right" id="nextQualBtn" onclick="scrollQualRight()"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Feel free to reach out with any questions or inquiries!</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap;">
+                <a href="tel:+15514553845" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-phone"></i> Call
+                </a>
+                <a href="https://wa.me/15514553845" target="_blank" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-comment"></i> Message
+                </a>
+                <a href="mailto:leosicolo44@gmail.com" class="btn btn-primary" style="display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+
+            <div class="contact-content" style="display: flex; justify-content: center; margin: 0 auto; max-width: 600px;">
+                <form class="contact-form" action="https://formspree.io/f/xjggbbkw" method="POST" style="width: 100%;">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025-2026 Leo Sicolo. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Qualifications carousel
+        function scrollQualLeft() {
+            const grid = document.getElementById('qualificationsGrid');
+            if (grid) {
+                grid.scrollLeft -= 170;
+            }
+        }
+
+        function scrollQualRight() {
+            const grid = document.getElementById('qualificationsGrid');
+            if (grid) {
+                grid.scrollLeft += 170;
+            }
+        }
+    </script>
+</body>
+</html>

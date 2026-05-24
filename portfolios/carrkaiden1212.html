@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Kaiden Carr</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        :root { --glass: rgba(255,255,255,0.08); --border: rgba(255,255,255,0.15); --cyan: #22d3ee; --pink: #f472b6; --green: #3fb950; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #e2e8f0;
+            background: #0d1117;
+            background-image: linear-gradient(135deg, #1e1b4b 0%, #0d1117 50%, #0a0a12 100%);
+            background-attachment: fixed;
+        }
+        .page { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+        nav {
+            position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+            z-index: 1000; width: min(920px, calc(100% - 32px));
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 12px 22px;
+            background: var(--glass); backdrop-filter: blur(16px);
+            border: 1px solid var(--border); border-radius: 10px;
+            font-family: 'JetBrains Mono', monospace; font-size: 13px;
+        }
+        nav a { color: #8b949e; text-decoration: none; margin-left: 16px; }
+        nav a:hover { color: var(--cyan); }
+        nav .brand { color: var(--green); margin-left: 0; font-weight: 600; }
+        nav .brand:hover { color: var(--cyan); }
+        section { padding: 52px 0; }
+        .panel {
+            background: rgba(22,27,34,0.85); backdrop-filter: blur(12px);
+            border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .panel-head {
+            background: #21262d; padding: 10px 16px; display: flex; gap: 8px; align-items: center;
+            border-bottom: 1px solid var(--border); font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8b949e;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .dot.r { background: #ff5f57; } .dot.y { background: #febc2e; } .dot.g { background: #28c840; }
+        .panel-head .path { margin-left: auto; color: var(--cyan); }
+        .panel-body { padding: 32px; }
+        .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+        .hero h1 { font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 12px; }
+        .hero h1 span { color: var(--cyan); }
+        .hero-sub { opacity: 0.9; margin-bottom: 8px; font-size: 1.05rem; }
+        .code-line { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #8b949e; margin: 8px 0; }
+        .code-line .k { color: var(--pink); } .code-line .s { color: #a5d6ff; } .code-line .c { color: var(--green); }
+        .btn { padding: 12px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; display: inline-block; margin-right: 10px; margin-top: 16px; border: none; cursor: pointer; font-family: 'Plus Jakarta Sans', sans-serif; }
+        .btn-neon { background: linear-gradient(135deg, var(--cyan), var(--pink)); color: #0a0a12; }
+        .btn-neon:hover { filter: brightness(1.08); }
+        .btn-outline { border: 1px solid var(--border); color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 12px; background: transparent; }
+        .btn-outline:hover { background: rgba(34,211,238,0.08); }
+        .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+        .stat-glass {
+            padding: 20px; text-align: center; border-radius: 12px;
+            background: var(--glass); border: 1px solid var(--border);
+        }
+        .stat-glass strong { display: block; font-size: 1.75rem; color: var(--cyan); font-family: 'JetBrains Mono', monospace; }
+        .stat-glass span { font-size: 12px; color: #8b949e; }
+        h2 { font-size: 1.35rem; margin-bottom: 18px; font-family: 'JetBrains Mono', monospace; }
+        h2::before { content: '# '; color: #8b949e; font-weight: 400; }
+        .section-subtitle { color: #94a3b8; margin: -12px 0 24px; font-size: 15px; }
+        #about .panel { max-width: 720px; margin-left: auto; margin-right: auto; }
+        .about-text {
+            text-align: center;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .about-text h2 { text-align: center; }
+        .about-text p { line-height: 1.8; opacity: 0.9; margin-bottom: 16px; margin-left: auto; margin-right: auto; }
+        .proj-dir-panel .panel-body { padding: 0; }
+        .proj-dir-layout { display: grid; grid-template-columns: 160px 220px 1fr; min-height: 340px; }
+        .proj-categories {
+            border-right: 1px solid var(--border);
+            padding: 10px 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .proj-cat {
+            width: 100%;
+            text-align: left;
+            padding: 11px 12px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: #8b949e;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
+        }
+        .proj-cat:hover { background: rgba(255,255,255,0.04); color: #e2e8f0; }
+        .proj-cat.active {
+            background: var(--glass);
+            border-color: var(--border);
+            color: var(--green);
+            border-left: 3px solid var(--cyan);
+        }
+        .proj-cat .count { font-size: 10px; color: #6e7681; }
+        .proj-cat.active .count { color: var(--cyan); }
+        .proj-files {
+            border-right: 1px solid var(--border);
+            padding: 10px 8px;
+            overflow-y: auto;
+            max-height: 420px;
+        }
+        .proj-files::-webkit-scrollbar { width: 6px; }
+        .proj-files::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+        .proj-file {
+            width: 100%;
+            text-align: left;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .proj-file:hover { background: rgba(255,255,255,0.04); }
+        .proj-file.active {
+            background: var(--glass);
+            border-color: var(--border);
+            color: var(--cyan);
+        }
+        .proj-file i { margin-right: 8px; color: var(--pink); width: 14px; }
+        .proj-detail-wrap { padding: 20px 24px; min-width: 0; }
+        .proj-detail-wrap h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .proj-detail-wrap .proj-desc { font-size: 14px; opacity: 0.85; line-height: 1.6; margin-bottom: 12px; }
+        .proj-detail-body { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+        .proj-empty {
+            padding: 40px 24px;
+            text-align: center;
+            color: #6e7681;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .proj-empty i { display: block; font-size: 2rem; margin-bottom: 12px; color: var(--border); }
+        .proj-hint { font-size: 11px; color: #6e7681; font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; }
+        .carousel {
+            border-radius: 8px; overflow: hidden; aspect-ratio: 16/10; position: relative;
+            border: 1px solid rgba(34,211,238,0.3); background: #000;
+            cursor: zoom-in;
+        }
+        .carousel::after {
+            content: 'Click to expand';
+            position: absolute; bottom: 8px; right: 10px;
+            font-size: 10px; font-family: 'JetBrains Mono', monospace;
+            color: rgba(255,255,255,0.7);
+            background: rgba(0,0,0,0.55);
+            padding: 4px 8px; border-radius: 4px;
+            pointer-events: none; opacity: 0; transition: opacity 0.2s;
+        }
+        .carousel:hover::after { opacity: 1; }
+        .carousel-slide {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            object-fit: contain; opacity: 0; transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        .carousel-slide.active { opacity: 1; pointer-events: auto; }
+        .carousel video.carousel-slide { background: #000; }
+        .lightbox {
+            display: none; position: fixed; inset: 0; z-index: 3000;
+            background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
+            align-items: center; justify-content: center; padding: 48px 56px;
+        }
+        .lightbox.open { display: flex; }
+        .lightbox-media {
+            max-width: min(95vw, 1400px); max-height: 85vh;
+            object-fit: contain; border-radius: 8px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 60px rgba(34,211,238,0.2);
+        }
+        .lightbox-img, .lightbox-video { display: none; }
+        .lightbox-img.visible, .lightbox-video.visible { display: block; }
+        .lightbox-caption {
+            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8b949e;
+        }
+        .lightbox-close {
+            position: absolute; top: 16px; right: 20px;
+            width: 44px; height: 44px; border: 1px solid var(--border);
+            background: var(--glass); color: #fff; font-size: 28px; line-height: 1;
+            border-radius: 8px; cursor: pointer;
+        }
+        .lightbox-close:hover { border-color: var(--cyan); color: var(--cyan); }
+        .lightbox-nav {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            width: 48px; height: 48px; border: 1px solid var(--border);
+            background: var(--glass); color: #fff; font-size: 24px;
+            border-radius: 8px; cursor: pointer;
+        }
+        .lightbox-nav:hover { border-color: var(--cyan); color: var(--cyan); }
+        .lightbox-prev { left: 16px; }
+        .lightbox-next { right: 16px; }
+        body.lightbox-open { overflow: hidden; }
+        .tag { font-size: 10px; padding: 4px 10px; margin: 4px 4px 0 0; display: inline-block; font-family: 'JetBrains Mono', monospace;
+            border: 1px solid rgba(63,185,80,0.4); color: var(--green); border-radius: 4px; }
+        .exp-panel .panel-body { padding: 0; }
+        .exp-layout { display: grid; grid-template-columns: minmax(240px, 320px) 1fr; min-height: 220px; }
+        .exp-list {
+            list-style: none;
+            border-right: 1px solid var(--border);
+            padding: 8px;
+            max-height: 320px;
+            overflow-y: auto;
+        }
+        .exp-list::-webkit-scrollbar { width: 6px; }
+        .exp-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
+        .exp-row {
+            width: 100%;
+            text-align: left;
+            padding: 12px 14px;
+            margin-bottom: 4px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .exp-row:hover { background: rgba(255,255,255,0.04); }
+        .exp-row.active {
+            background: var(--glass);
+            border-color: var(--border);
+            border-left: 3px solid var(--pink);
+        }
+        .exp-row-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+        .exp-row h3 { font-size: 0.85rem; font-weight: 600; line-height: 1.3; }
+        .exp-row .date { font-size: 10px; color: #8b949e; font-family: 'JetBrains Mono', monospace; white-space: nowrap; flex-shrink: 0; }
+        .exp-row .co { font-size: 11px; color: var(--cyan); font-family: 'JetBrains Mono', monospace; }
+        .exp-detail { padding: 24px 28px; display: flex; flex-direction: column; }
+        .exp-detail-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 12px; flex-wrap: wrap; }
+        .exp-detail-header h3 { font-size: 1.15rem; margin-bottom: 4px; }
+        .exp-detail-header .co { color: var(--cyan); font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+        .exp-detail-header .date { font-size: 12px; color: #8b949e; font-family: 'JetBrains Mono', monospace; }
+        .exp-detail-desc { font-size: 14px; color: #94a3b8; line-height: 1.6; flex: 1; margin-bottom: 16px; }
+        .exp-detail-foot { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        .exp-detail-foot a { color: var(--pink); font-size: 1.2rem; text-decoration: none; }
+        .exp-detail-foot a:hover { color: var(--cyan); }
+        .exp-hint { font-size: 11px; color: #6e7681; font-family: 'JetBrains Mono', monospace; padding: 8px 12px 0; }
+        #contact .panel { max-width: 620px; margin-left: auto; margin-right: auto; overflow: hidden; }
+        .contact-panel {
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            overflow: hidden;
+        }
+        .contact-panel h2,
+        .contact-panel .section-subtitle { text-align: center; }
+        .contact-panel form {
+            text-align: left;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+        }
+        .contact-panel .btn-neon { width: 100%; max-width: 100%; margin-top: 4px; margin-right: 0; }
+        form input, form textarea {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #0d1117;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: #e2e8f0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            box-sizing: border-box;
+        }
+        form textarea {
+            resize: vertical;
+            min-height: 120px;
+            max-height: 280px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        form input:focus, form textarea:focus { border-color: var(--green); outline: none; }
+        form input::placeholder, form textarea::placeholder { color: #6e7681; }
+        .social { display: flex; gap: 12px; margin-top: 24px; justify-content: center; }
+        .social a { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--cyan); text-decoration: none; background: var(--glass); transition: 0.2s; }
+        .social a:hover { background: rgba(34,211,238,0.15); color: var(--pink); }
+        footer { text-align: center; padding: 24px 0 36px; color: #8b949e; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+        @media (max-width: 900px) {
+            .proj-dir-layout { grid-template-columns: 1fr; }
+            .proj-categories {
+                flex-direction: row;
+                flex-wrap: wrap;
+                border-right: none;
+                border-bottom: 1px solid var(--border);
+            }
+            .proj-files { border-right: none; border-bottom: 1px solid var(--border); max-height: 160px; }
+            .proj-detail-body { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 768px) {
+            .hero-grid, .stats-row { grid-template-columns: 1fr; }
+            .exp-layout { grid-template-columns: 1fr; }
+            .exp-list { border-right: none; border-bottom: 1px solid var(--border); max-height: 200px; }
+            nav .links { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="../index.html" class="brand">BEST</a>
+        <div class="links">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#projects">projects</a>
+            <a href="#experiences">experience</a>
+            <a href="#contact">contact</a>
+        </div>
+    </nav>
+
+    <div class="page">
+        <section id="home" style="padding-top: 88px; padding-bottom: 40px;">
+            <div class="panel">
+                <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">~/kaiden/index.tsx</span></div>
+                <div class="panel-body hero">
+                    <div class="hero-grid">
+                        <div>
+                            <p class="code-line"><span class="c">// Kaiden Carr — Developer Portfolio</span></p>
+                            <h1>Hello, I'm <span>Kaiden Carr</span></h1>
+                            <p class="hero-sub">Full Stack Developer</p>
+                            <p class="code-line"><span class="k">export const</span> <span class="s">focus</span> = <span class="s">"bots · apps · communities"</span>;</p>
+                            <a href="#projects" class="btn btn-neon">View My Work</a>
+                            <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                        </div>
+                        <div class="stats-row">
+                            <div class="stat-glass"><strong>34+</strong><span>Projects Completed</span></div>
+                            <div class="stat-glass"><strong>27+</strong><span>Happy Users</span></div>
+                            <div class="stat-glass"><strong>3+</strong><span>Years Experience</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="panel">
+                <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">about.md</span></div>
+                <div class="panel-body about-text">
+                    <h2>about me</h2>
+                    <p>Hey, I'm a passionate developer who loves working with JavaScript and Python. I can design and build just about anything you need. I got into programming by teaching myself different languages when I was bored one day, and now I run a development and design community.</p>
+                    <p>Whether it's automating tasks with scripts, creating interactive Discord bots, developing Python apps, or crafting Minecraft mods, I'm dedicated to delivering products to your standard.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>featured projects</h2>
+            <p class="proj-hint">Browse by category — select a folder, then open a project</p>
+            <div class="panel proj-dir-panel">
+                <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">~/projects</span></div>
+                <div class="proj-dir-layout">
+                    <div class="proj-categories" role="tablist" aria-label="Project categories">
+                        <button type="button" class="proj-cat active" data-cat="apps" role="tab" aria-selected="true">Apps <span class="count">2</span></button>
+                        <button type="button" class="proj-cat" data-cat="bots" role="tab" aria-selected="false">Bots <span class="count">1</span></button>
+                    </div>
+                    <div class="proj-files" id="projFiles" role="tablist" aria-label="Projects in category"></div>
+                    <div class="proj-detail-wrap" id="projDetail" role="tabpanel"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiences">
+            <h2>My Experience</h2>
+            <div class="panel exp-panel">
+                <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">experience.log</span></div>
+                <div class="exp-layout">
+                    <div class="exp-list" role="tablist" aria-label="Experience roles">
+                        <button type="button" class="exp-row active" role="tab" aria-selected="true" data-exp="0">
+                            <div class="exp-row-top"><h3>Staff Supervisor</h3><span class="date">2019-2020</span></div>
+                            <span class="co">RACM</span>
+                        </button>
+                        <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="1">
+                            <div class="exp-row-top"><h3>Design Staff</h3><span class="date">2025-2026</span></div>
+                            <span class="co">Nova Designs</span>
+                        </button>
+                        <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="2">
+                            <div class="exp-row-top"><h3>Designer to Executive</h3><span class="date">2025-2026</span></div>
+                            <span class="co">Vexira Customs</span>
+                        </button>
+                        <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="3">
+                            <div class="exp-row-top"><h3>Coordination Team</h3><span class="date">2026</span></div>
+                            <span class="co">.Flower</span>
+                        </button>
+                        <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="4">
+                            <div class="exp-row-top"><h3>Designer to Staff</h3><span class="date">2026</span></div>
+                            <span class="co">Floral Customs</span>
+                        </button>
+                        <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="5">
+                            <div class="exp-row-top"><h3>Moderator</h3><span class="date">2026</span></div>
+                            <span class="co">Advertising ERLC</span>
+                        </button>
+                    </div>
+                    <div class="exp-detail" id="expDetail" role="tabpanel"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="panel">
+                <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">contact.form</span></div>
+                <div class="panel-body contact-panel">
+                    <h2>Contact Me</h2>
+                    <p class="section-subtitle">Feel free to reach out for collaborations or just a friendly hello!</p>
+                    <form action="https://formspree.io/f/xjggbbkw" method="POST">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn btn-neon">Send Message</button>
+                    </form>
+                    <div class="social">
+                        <a href="https://www.tiktok.com/@Carrkaiden1212" title="TikTok" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://discord.gg/nexa-core" title="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
+                        <a href="mailto:support@nexa-core.net" title="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>// &copy; 2022-2026 Kaiden Carr. All rights reserved.</footer>
+    </div>
+
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Project media viewer">
+        <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+        <button type="button" class="lightbox-nav lightbox-prev" aria-label="Previous">&#8249;</button>
+        <button type="button" class="lightbox-nav lightbox-next" aria-label="Next">&#8250;</button>
+        <img class="lightbox-img lightbox-media" src="" alt="">
+        <video class="lightbox-video lightbox-media" controls playsinline></video>
+        <p class="lightbox-caption"></p>
+    </div>
+
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImg = lightbox.querySelector('.lightbox-img');
+        var lightboxVideo = lightbox.querySelector('.lightbox-video');
+        var lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        var lightboxClose = lightbox.querySelector('.lightbox-close');
+        var lightboxPrev = lightbox.querySelector('.lightbox-prev');
+        var lightboxNext = lightbox.querySelector('.lightbox-next');
+        var lightboxSlides = [];
+        var lightboxIndex = 0;
+        var lightboxCarousel = null;
+
+        function getActiveIndex(carousel) {
+            var slides = carousel.querySelectorAll('.carousel-slide');
+            for (var n = 0; n < slides.length; n++) {
+                if (slides[n].classList.contains('active')) return n;
+            }
+            return 0;
+        }
+
+        function pauseLightboxVideo() {
+            lightboxVideo.pause();
+            lightboxVideo.removeAttribute('src');
+        }
+
+        function pauseAllActiveCarouselVideos() {
+            document.querySelectorAll('.carousel video.carousel-slide.active').forEach(function (video) {
+                video.pause();
+            });
+        }
+
+        function showLightboxSlide() {
+            var slide = lightboxSlides[lightboxIndex];
+            pauseLightboxVideo();
+            lightboxImg.classList.remove('visible');
+            lightboxVideo.classList.remove('visible');
+            if (slide.tagName === 'VIDEO') {
+                lightboxVideo.src = slide.src;
+                lightboxVideo.classList.add('visible');
+                if (!document.hidden) {
+                    lightboxVideo.play().catch(function () {});
+                }
+            } else {
+                lightboxImg.src = slide.src;
+                lightboxImg.alt = slide.alt || 'Project screenshot';
+                lightboxImg.classList.add('visible');
+            }
+            lightboxCaption.textContent = (lightboxIndex + 1) + ' / ' + lightboxSlides.length;
+            lightboxPrev.style.visibility = lightboxSlides.length > 1 ? 'visible' : 'hidden';
+            lightboxNext.style.visibility = lightboxSlides.length > 1 ? 'visible' : 'hidden';
+        }
+
+        function openLightbox(carousel) {
+            lightboxCarousel = carousel;
+            lightboxSlides = Array.prototype.slice.call(carousel.querySelectorAll('.carousel-slide'));
+            lightboxIndex = getActiveIndex(carousel);
+            showLightboxSlide();
+            lightbox.classList.add('open');
+            document.body.classList.add('lightbox-open');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('open');
+            document.body.classList.remove('lightbox-open');
+            lightboxCarousel = null;
+            lightboxImg.src = '';
+            lightboxImg.classList.remove('visible');
+            pauseLightboxVideo();
+            lightboxVideo.classList.remove('visible');
+        }
+
+        function stepLightbox(delta) {
+            if (!lightboxSlides.length) return;
+            lightboxIndex = (lightboxIndex + delta + lightboxSlides.length) % lightboxSlides.length;
+            showLightboxSlide();
+        }
+
+        var carouselTimers = new WeakMap();
+
+        function setCarouselSlide(carousel, index) {
+            var slides = carousel.querySelectorAll('.carousel-slide');
+            slides.forEach(function (slide, idx) {
+                slide.classList.toggle('active', idx === index);
+                if (slide.tagName === 'VIDEO' && idx !== index) slide.pause();
+            });
+        }
+
+        function initCarousel(carousel) {
+            if (!carousel) return;
+            var existing = carouselTimers.get(carousel);
+            if (existing) clearInterval(existing);
+            var slides = carousel.querySelectorAll('.carousel-slide');
+            if (!slides.length) return;
+            var i = 0;
+            setCarouselSlide(carousel, 0);
+            if (slides.length > 1) {
+                var timer = setInterval(function () {
+                    if (document.hidden) return;
+                    if (lightbox.classList.contains('open') && lightboxCarousel === carousel) return;
+                    i = (i + 1) % slides.length;
+                    setCarouselSlide(carousel, i);
+                }, 3000);
+                carouselTimers.set(carousel, timer);
+            }
+            if (!carousel.dataset.lightboxBound) {
+                carousel.addEventListener('click', function () {
+                    openLightbox(carousel);
+                });
+                carousel.dataset.lightboxBound = '1';
+            }
+        }
+
+        function projectMedia(project) {
+            if (project.media) return project.media;
+            return (project.images || []).map(function (src) {
+                return { type: 'image', src: src };
+            });
+        }
+
+        function buildMediaHtml(project) {
+            return projectMedia(project).map(function (item, idx) {
+                var active = idx === 0 ? ' active' : '';
+                if (item.type === 'video') {
+                    return '<video class="carousel-slide' + active + '" src="' + item.src + '" muted playsinline loop controls></video>';
+                }
+                return '<img class="carousel-slide' + active + '" src="' + item.src + '" alt="' + project.title + '">';
+            }).join('');
+        }
+
+        var projects = [
+            {
+                id: 'aio',
+                title: 'All In One',
+                path: 'all-in-one/',
+                categories: ['apps'],
+                desc: 'A Python app that integrates Discord, Roblox, Spotify, and YouTube into a single UI. This has Discord bot management with messaging, Roblox user lookup and game checking, Spotify music controls with lyrics and playlists, and YouTube video search and sharing capabilities.',
+                tags: ['Python', 'App', 'Discontinued'],
+                images: [
+                    '../assets/images/kc-work-aio1.png',
+                    '../assets/images/kc-work-aio2.png',
+                    '../assets/images/kc-work-aio3.png',
+                    '../assets/images/kc-work-aio4.png',
+                    '../assets/images/kc-work-aio5.png',
+                    '../assets/images/kc-work-aio6.png'
+                ]
+            },
+            {
+                id: 'casino',
+                title: 'Python Casino App',
+                path: 'casino-app/',
+                categories: ['apps'],
+                desc: 'This is a casino app I made in python, it has a variety of modes, that all function, this DOES NOT use realy currecy and for fun only.',
+                tags: ['App', 'Python', 'Discontinued'],
+                images: [
+                    '../assets/images/kc-work-casino1.png',
+                    '../assets/images/kc-work-casino2.png',
+                    '../assets/images/kc-work-casino3.png',
+                    '../assets/images/kc-work-casino4.png',
+                    '../assets/images/kc-work-casino5.png',
+                    '../assets/images/kc-work-casino6.png'
+                ]
+            },
+            {
+                id: 'orderbot',
+                title: 'Discord Order Bot',
+                path: 'order-bot/',
+                categories: ['bots'],
+                desc: 'Discord order management bot: create orders with generated IDs linked to customers, update order status with automatic DMs when status changes, list all orders with an orderlist command, auto-close inactive tickets or when a client leaves, and more.',
+                tags: ['Discord', 'Bot', 'JavaScript'],
+                media: [
+                    { type: 'video', src: '../assets/videos/orderbot.mp4' }
+                ]
+            }
+        ];
+
+        var projCats = document.querySelectorAll('.proj-cat');
+        var projFilesEl = document.getElementById('projFiles');
+        var projDetailEl = document.getElementById('projDetail');
+        var activeCategory = 'all';
+        var activeProjectId = null;
+
+        function projectsInCategory(cat) {
+            if (cat === 'all') return projects.slice();
+            return projects.filter(function (p) {
+                return p.categories.indexOf(cat) !== -1;
+            });
+        }
+
+        function renderProjectDetail(project) {
+            if (!project) {
+                projDetailEl.innerHTML =
+                    '<div class="proj-empty">' +
+                        '<i class="fas fa-folder-open"></i>' +
+                        '<p>No projects in this folder yet.</p>' +
+                        '<p style="font-size:11px;margin-top:8px;">Check another category or come back later.</p>' +
+                    '</div>';
+                return;
+            }
+            var mediaHtml = buildMediaHtml(project);
+            var tagsHtml = project.tags.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('');
+            projDetailEl.innerHTML =
+                '<div class="panel-head" style="margin:-20px -24px 16px;border-radius:0;">' +
+                    '<span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>' +
+                    '<span class="path">' + project.path + '</span>' +
+                '</div>' +
+                '<div class="proj-detail-body">' +
+                    '<div class="carousel">' + mediaHtml + '</div>' +
+                    '<div>' +
+                        '<h3>' + project.title + '</h3>' +
+                        '<p class="proj-desc">' + project.desc + '</p>' +
+                        '<div>' + tagsHtml + '</div>' +
+                    '</div>' +
+                '</div>';
+            initCarousel(projDetailEl.querySelector('.carousel'));
+        }
+
+        function renderProjectFiles(list) {
+            projFilesEl.innerHTML = '';
+            if (!list.length) {
+                projFilesEl.innerHTML = '<p style="padding:12px;font-size:11px;color:#6e7681;font-family:JetBrains Mono,monospace;">Empty folder</p>';
+                renderProjectDetail(null);
+                activeProjectId = null;
+                return;
+            }
+            list.forEach(function (project) {
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'proj-file' + (project.id === activeProjectId ? ' active' : '');
+                btn.setAttribute('data-id', project.id);
+                btn.setAttribute('role', 'tab');
+                btn.setAttribute('aria-selected', project.id === activeProjectId ? 'true' : 'false');
+                btn.innerHTML = '<i class="fas fa-folder"></i>' + project.path;
+                btn.addEventListener('click', function () {
+                    activeProjectId = project.id;
+                    projFilesEl.querySelectorAll('.proj-file').forEach(function (f) {
+                        f.classList.remove('active');
+                        f.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    renderProjectDetail(project);
+                });
+                projFilesEl.appendChild(btn);
+            });
+            if (!list.some(function (p) { return p.id === activeProjectId; })) {
+                activeProjectId = list[0].id;
+            }
+            var current = list.filter(function (p) { return p.id === activeProjectId; })[0] || list[0];
+            activeProjectId = current.id;
+            projFilesEl.querySelectorAll('.proj-file').forEach(function (f) {
+                var on = f.getAttribute('data-id') === activeProjectId;
+                f.classList.toggle('active', on);
+                f.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            renderProjectDetail(current);
+        }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            projCats.forEach(function (btn) {
+                var on = btn.getAttribute('data-cat') === cat;
+                btn.classList.toggle('active', on);
+                btn.setAttribute('aria-selected', on ? 'true' : 'false');
+            });
+            renderProjectFiles(projectsInCategory(cat));
+        }
+
+        function updateCategoryCounts() {
+            projCats.forEach(function (btn) {
+                var cat = btn.getAttribute('data-cat');
+                var count = projectsInCategory(cat).length;
+                var badge = btn.querySelector('.count');
+                if (badge) badge.textContent = String(count);
+            });
+        }
+
+        projCats.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                setCategory(btn.getAttribute('data-cat'));
+            });
+        });
+
+        updateCategoryCounts();
+        setCategory('apps');
+
+        lightboxClose.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function (e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        lightboxPrev.addEventListener('click', function (e) { e.stopPropagation(); stepLightbox(-1); });
+        lightboxNext.addEventListener('click', function (e) { e.stopPropagation(); stepLightbox(1); });
+        document.addEventListener('keydown', function (e) {
+            if (!lightbox.classList.contains('open')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') stepLightbox(-1);
+            if (e.key === 'ArrowRight') stepLightbox(1);
+        });
+
+        document.addEventListener('visibilitychange', function () {
+            if (!document.hidden) return;
+            pauseAllActiveCarouselVideos();
+            if (lightbox.classList.contains('open')) {
+                lightboxVideo.pause();
+            }
+        });
+
+        var experiences = [
+            {
+                title: 'Staff Supervisor',
+                company: 'RACM',
+                date: '2019-2020',
+                desc: 'Staff Supervisor for RACM Discord community. Promoted from Mod to Supervisor in under a year. Server focused on Racing and car events/meets on ER:LC.',
+                tags: ['Leadership', 'Moderation', '5k+'],
+                discord: 'https://discord.gg/erlc'
+            },
+            {
+                title: 'Design Staff',
+                company: 'Nova Designs',
+                date: '2025-2026',
+                desc: 'Staff member and Discord bot designer for Nova Designs. Designed and created custom Discord bots for the community.',
+                tags: ['Design', 'Discord Bots', '1000+'],
+                discord: 'https://discord.gg/MNwWprwjkH'
+            },
+            {
+                title: 'Designer to Executive',
+                company: 'Vexira Customs',
+                date: '2025-2026',
+                desc: 'Started as designer for livery and Discord bots using JavaScript and Python. Progressed to Executive role in the community.',
+                tags: ['Design', 'Leadership', '400+'],
+                discord: 'https://discord.gg/2f6z9zX38t'
+            },
+            {
+                title: 'Coordination Team',
+                company: '.Flower',
+                date: '2026',
+                desc: 'Part of the coordination team for .Flower community.',
+                tags: ['Coordination', 'Leadership', '300+'],
+                discord: 'https://discord.gg/hFGeSPX88a'
+            },
+            {
+                title: 'Designer to Staff',
+                company: 'Floral Customs',
+                date: '2026',
+                desc: 'Started as designer and progressed to staff team for Floral Customs community.',
+                tags: ['Design', 'Leadership', '600+'],
+                discord: 'https://discord.gg/E2Pspmfv58'
+            },
+            {
+                title: 'Moderator',
+                company: 'Advertising ERLC',
+                date: '2026',
+                desc: 'Moderation duties include moderatoring users watching channels, make sure users stick to the server rules, and maintaining a positive community environment.',
+                tags: ['Staff', 'Moderator', '2000+'],
+                discord: 'https://discord.gg/aderlc'
+            }
+        ];
+
+        var expRows = document.querySelectorAll('.exp-row');
+        var expDetail = document.getElementById('expDetail');
+
+        function renderExperience(index) {
+            var exp = experiences[index];
+            var tagsHtml = exp.tags.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('');
+            expDetail.innerHTML =
+                '<div class="exp-detail-header">' +
+                    '<div><h3>' + exp.title + '</h3><p class="co">' + exp.company + '</p></div>' +
+                    '<span class="date">' + exp.date + '</span>' +
+                '</div>' +
+                '<p class="exp-detail-desc">' + exp.desc + '</p>' +
+                '<div class="exp-detail-foot">' +
+                    '<div>' + tagsHtml + '</div>' +
+                    '<a href="' + exp.discord + '" title="Join Server" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>' +
+                '</div>';
+        }
+
+        expRows.forEach(function (row) {
+            row.addEventListener('click', function () {
+                var index = parseInt(row.getAttribute('data-exp'), 10);
+                expRows.forEach(function (r) {
+                    r.classList.remove('active');
+                    r.setAttribute('aria-selected', 'false');
+                });
+                row.classList.add('active');
+                row.setAttribute('aria-selected', 'true');
+                renderExperience(index);
+            });
+        });
+
+        renderExperience(0);
+    </script>
+</body>
+</html>
