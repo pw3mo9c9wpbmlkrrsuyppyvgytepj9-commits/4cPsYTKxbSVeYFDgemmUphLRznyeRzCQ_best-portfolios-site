@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .contact-form select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #A78BFA;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .contact-form select:focus {
+            border-color: #e5e7eb !important; /* Pale white */
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .contact-form select:active {
+            outline: none !important;
+            box-shadow: none !important;
+            border-color: var(--border-color) !important;
+        }
+        .contact-form select:focus-visible {
+            outline: none !important;
+            box-shadow: none !important;
+            border-color: var(--border-color) !important;
+        }
+        .contact-form select::-webkit-focus-ring {
+            outline: none !important;
+            box-shadow: none !important;
+        }
+        .styled-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #A78BFA;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            background: var(--bg-white);
+            color: var(--text-dark);
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .styled-select:focus {
+            border-color: #e5e7eb !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html" style="text-decoration: none; color: inherit;">Portfolios</a></div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 80px;">
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="highlight">Contact Us</span></h1>
+            <p class="hero-subtitle">Get in touch with the team</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" style="margin-top: 40px;">
+        <div class="container">
+            <h2 class="section-title">Send Us a Message</h2>
+            <p class="section-subtitle">We'd love to hear from you! Fill out the form below and we'll get back to you soon.</p>
+            <div class="contact-content" style="display: flex; justify-content: center; margin: 0 auto; max-width: 600px;">
+                <form class="contact-form" action="https://formspree.io/f/xjggbbkw" method="POST" style="width: 100%;">
+                    <div class="form-group">
+                        <select name="subject" required class="styled-select">
+                            <option value="">Select a subject</option>
+                            <option value="general">General enquiry</option>
+                            <option value="portfolio">Request a portfolio</option>
+                            <option value="order">Place an order</option>
+                            <option value="feedback">Leave feedback</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const designers = [
+            "Kaiden Carr",
+            "Antony Hallick",
+            "Mason",
+            "Dudwig",
+            "Leo Sicolo",
+            "yescat",
+            "myfloweralla",
+            "FluffyChick458"
+        ];
+
+        const subjectSelect = document.querySelector('select[name="subject"]');
+        const nameInput = document.querySelector('input[name="name"]');
+        const emailInput = document.querySelector('input[name="email"]');
+        const messageTextarea = document.querySelector('textarea[name="message"]');
+
+        // Create designer dropdown
+        const designerDropdown = document.createElement('select');
+        designerDropdown.name = 'designer';
+        designerDropdown.required = true;
+        designerDropdown.className = 'styled-select';
+        designerDropdown.innerHTML = '<option value="">Select a designer</option>' + designers.map(d => `<option value="${d}">${d}</option>`).join('');
+
+        designerDropdown.size = 0; // Ensure it's a dropdown, not a list
+        // Limit visible options to 5 with scrolling
+        // This works for most browsers
+        // For Chrome/Edge, use CSS max-height and overflow
+
+        designerDropdown.style.maxHeight = '10.5em'; // 5 * 2.1em (approx height per option)
+        designerDropdown.style.overflowY = 'auto';
+
+        function setFeedbackMode(isFeedback) {
+            if (isFeedback) {
+                // Change name to Username
+                nameInput.placeholder = 'Username';
+                // Replace email with designer dropdown
+                if (!emailInput.parentNode.querySelector('select[name="designer"]')) {
+                    emailInput.style.display = 'none';
+                    emailInput.required = false;
+                    emailInput.parentNode.appendChild(designerDropdown);
+                }
+                // Change message placeholder
+                messageTextarea.placeholder = 'Your feedback...';
+            } else {
+                // Restore name
+                nameInput.placeholder = 'Your Name';
+                // Restore email
+                if (emailInput.parentNode.querySelector('select[name="designer"]')) {
+                    emailInput.style.display = '';
+                    emailInput.required = true;
+                    emailInput.parentNode.removeChild(designerDropdown);
+                }
+                // Restore message
+                messageTextarea.placeholder = 'Your Message';
+            }
+        }
+
+        subjectSelect.addEventListener('change', function() {
+            setFeedbackMode(this.value === 'feedback');
+        });
+    </script>
+</body>
+</html>

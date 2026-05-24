@@ -1,0 +1,32 @@
+{
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "trailingSlash": false,
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/index",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/carrkaiden1212",
+      "destination": "/carrkaiden1212.html"
+    },
+    {
+      "source": "/Antony_Hallick",
+      "destination": "/Antony_Hallick.html"
+    },
+    {
+      "source": "/Mason",
+      "destination": "/Mason.html"
+    },
+    {
+      "source": "/Dudwig",
+      "destination": "/Dudwig.html"
+    },
+    {
+      "source": "/Leo_Sicolo",
+      "destination": "/Leo_Sicolo.html"
+    }
+  ]
+}

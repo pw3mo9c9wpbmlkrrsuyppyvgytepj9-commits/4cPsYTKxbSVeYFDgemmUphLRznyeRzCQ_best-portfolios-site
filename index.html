@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html" style="text-decoration: none; color: inherit;">Portfolios</a></div>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" style="margin-top: 80px;">
+        <div class="hero-content">
+            <h1 class="hero-title"><span class="highlight">Portfolio</span></h1>
+            <p class="hero-subtitle">Explore portfolios from talented developers</p>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search by name, skills, or tags..."
+                >
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Directory -->
+    <section class="portfolio-directory">
+        <div class="container">
+            <h2 class="section-title">Featured Developers</h2>
+            <div class="profiles-grid" id="profilesGrid">
+                <!-- Profile cards will be inserted here -->
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No developers found matching your search.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Right Popup -->
+    <div class="bottom-popup" id="bottomPopup">
+        <button class="popup-close" id="popupClose">&times;</button>
+        <p>Want a portfolio here? <a href="carrkaiden1212.html#contact">Contact us</a></p>
+    </div>
+
+    <!-- Forum Section -->
+    <section class="forum-section">
+        <div class="container">
+            <h2 class="section-title">Community Forum</h2>
+            <p class="section-subtitle">Ask questions or request your own portfolio</p>
+            
+            <div class="forum-content">
+                <div class="forum-form-container">
+                    <h3>Submit Your Question or Request</h3>
+                    <form class="forum-form" action="https://formspree.io/f/xjggbbkw" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="topic" required>
+                                <option value="">Select Topic</option>
+                                <option value="general_question">General Question</option>
+                                <option value="portfolio_request">Request My Portfolio</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="home-script.js"></script>
+</body>
+</html>
