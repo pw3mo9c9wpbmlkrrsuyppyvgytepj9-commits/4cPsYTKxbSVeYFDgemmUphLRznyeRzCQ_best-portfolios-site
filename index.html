@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand"><a href="index.html" style="text-decoration: none; color: inherit;">Portfolios</a></div>
+
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <section class="search-section" style="margin-top: 80px;">
+        <div class="container">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Search by name, skills, or tags..."
+                >
+                <i class="fas fa-search search-icon"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Directory -->
+    <section class="portfolio-directory">
+        <div class="container">
+            <h2 class="section-title">Featured Developers</h2>
+            <div class="profiles-grid" id="profilesGrid">
+                <!-- Profile cards will be inserted here -->
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No developers found matching your search.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom Right Popup -->
+    <div class="bottom-popup" id="bottomPopup">
+        <button class="popup-close" id="popupClose">&times;</button>
+        <p>Want a portfolio here? <a href="contact.html">Contact us</a></p>
+    </div>
+
+    <script src="home-script.js"></script>
+</body>
+</html>
