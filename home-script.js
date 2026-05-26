@@ -79,6 +79,14 @@ const portfolios = [
         image: "./assets/images/denji.notfound.webp",
         tags: ["Video Editing", "Minecraft", "Discord", "Gaming"],
         portfolioUrl: "/toxiqxprime"
+    },
+    {
+        name: "a320_",
+        title: "Discord Server Builder",
+        bio: "I make professional discord servers for free.",
+        image: "./assets/images/a320.webp",
+        tags: ["Discord", "Server Design", "United Kingdom"],
+        portfolioUrl: "/a320_"
     }
 ];
 

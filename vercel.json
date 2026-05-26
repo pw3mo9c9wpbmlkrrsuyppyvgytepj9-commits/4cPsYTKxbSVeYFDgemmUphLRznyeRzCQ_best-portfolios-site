@@ -76,6 +76,14 @@
     {
       "source": "/isjalen",
       "destination": "/portfolios/isjalen.html"
+    },
+    {
+      "source": "/a320_",
+      "destination": "/portfolios/a320.html"
+    },
+    {
+      "source": "/a320",
+      "destination": "/portfolios/a320.html"
     }
   ]
 }
