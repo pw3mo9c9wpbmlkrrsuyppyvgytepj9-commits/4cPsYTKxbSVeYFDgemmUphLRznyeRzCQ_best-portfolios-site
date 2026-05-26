@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="../favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="I make professional discord servers for free.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="best-portfolios">
+    <meta property="og:url" content="https://www.best-portfolios.com/a320_">
+    <meta property="og:title" content="a320_ - Discord Server Builder">
+    <meta property="og:description" content="I make professional discord servers for free.">
+    <meta property="og:image" content="https://www.best-portfolios.com/assets/images/a320.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="a320_ - Discord Server Builder">
+    <meta name="twitter:description" content="I make professional discord servers for free.">
+    <meta name="twitter:image" content="https://www.best-portfolios.com/assets/images/a320.webp">
+    <title>@a320_</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            min-height: 100%;
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            color: #fff;
+            background: #000;
+        }
+
+        body {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .bg-layer {
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.82) 100%),
+                url("../assets/images/a320.webp") center/cover no-repeat;
+            filter: grayscale(0.75) blur(3px);
+            transform: scale(1.08);
+            z-index: 0;
+        }
+
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.85);
+            user-select: none;
+            animation: drift linear infinite;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.35);
+        }
+
+        .particle.snow { font-size: 14px; }
+
+        .discord-card {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            margin: 0 auto 0.85rem;
+            max-width: 320px;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+        }
+
+        .discord-avatar-wrap {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .discord-avatar-mini {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .status-dnd {
+            position: absolute;
+            right: -2px;
+            bottom: -2px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #f04747;
+            border: 3px solid rgba(20, 20, 20, 0.9);
+        }
+
+        .discord-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .discord-status {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 0.15rem;
+        }
+
+        .discord-status .heart {
+            color: #f472b6;
+            margin-right: 0.25rem;
+        }
+
+        .discord-activity {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        @keyframes drift {
+            from { transform: translateY(-10vh) rotate(0deg); }
+            to { transform: translateY(110vh) rotate(360deg); }
+        }
+
+        .back-link {
+            position: fixed;
+            z-index: 5;
+            backdrop-filter: blur(8px);
+            top: 1.25rem;
+            left: 1.25rem;
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            font-size: 0.82rem;
+            padding: 0.35rem 0.5rem;
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .back-link:hover { color: #fff; }
+
+        .profile-shell {
+            position: relative;
+            z-index: 3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.25rem 1.5rem;
+        }
+
+        .profile-wrap {
+            width: min(440px, 100%);
+            text-align: center;
+        }
+
+        .avatar {
+            width: 118px;
+            height: 118px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+            margin: 0 auto 0.6rem;
+            display: block;
+        }
+
+        .username {
+            font-size: clamp(2rem, 6vw, 2.6rem);
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+
+        .username .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 0.9em;
+            background: #fff;
+            margin-left: 2px;
+            vertical-align: baseline;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        .bio {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 0.35rem;
+            line-height: 1.45;
+        }
+
+        .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.92rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-bottom: 0.85rem;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 1.1rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .work-heading {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 0.5rem;
+        }
+
+        .social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease, background 0.2s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .social-btn:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .copy-row {
+            display: flex;
+            gap: 0.65rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .copy-btn {
+            padding: 0.55rem 1rem;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.45);
+            color: #fff;
+            font-size: 0.85rem;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: background 0.2s ease;
+        }
+
+        .copy-btn:hover { background: rgba(255, 255, 255, 0.12); }
+
+        .copy-btn.copied {
+            background: rgba(34, 197, 94, 0.25);
+            border-color: rgba(34, 197, 94, 0.45);
+        }
+
+        .work-carousel {
+            position: relative;
+            margin: 0 auto;
+            max-width: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.45);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .work-carousel.hidden {
+            display: none;
+        }
+
+        .work-carousel-viewport {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            background: rgba(0, 0, 0, 0.35);
+        }
+
+        .work-carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.45s ease;
+        }
+
+        .work-carousel-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            height: 100%;
+        }
+
+        .work-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        .work-carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.55);
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            transition: background 0.2s ease;
+        }
+
+        .work-carousel-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .work-carousel-btn.prev { left: 0.5rem; }
+        .work-carousel-btn.next { right: 0.5rem; }
+
+        .work-carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.65rem 0.5rem;
+        }
+
+        .work-carousel-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            border: none;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.3);
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+
+        .work-carousel-dot.active {
+            background: #fff;
+            transform: scale(1.15);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 4rem;
+            left: 50%;
+            transform: translateX(-50%) translateY(12px);
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 0.55rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+            z-index: 30;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-layer" aria-hidden="true"></div>
+    <div class="particles" id="particles" aria-hidden="true"></div>
+
+    <a href="../index.html" class="back-link">← all portfolios</a>
+
+    <main class="profile-shell">
+        <div class="profile-wrap">
+            <img
+                class="avatar"
+                src="../assets/images/a320.webp"
+                alt="a320_"
+            >
+            <h1 class="username">a320_<span class="cursor" aria-hidden="true"></span></h1>
+            <p class="bio">I make professional discord servers for free.</p>
+            <p class="location">
+                <i class="fas fa-location-dot"></i>
+                United Kingdom
+            </p>
+
+            <div class="discord-card">
+                <div class="discord-avatar-wrap">
+                    <img
+                        class="discord-avatar-mini"
+                        src="../assets/images/a320.webp"
+                        alt=""
+                    >
+                    <span class="status-dnd" title="Do Not Disturb"></span>
+                </div>
+                <div>
+                    <div class="discord-name">A320_lover3</div>
+                    <div class="discord-status"><span class="heart">♥</span> cats</div>
+                    <div class="discord-activity">🏳️‍⚧️ who am i?</div>
+                </div>
+            </div>
+
+            <div class="social-row">
+                <a href="https://www.roblox.com/users/2349479132/profile" class="social-btn" target="_blank" rel="noopener noreferrer" title="Roblox">
+                    <i class="fas fa-cube"></i>
+                </a>
+                <a href="https://discord.com/users/1321806310286692372" class="social-btn" target="_blank" rel="noopener noreferrer" title="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="mailto:general.ellipse061@passinbox.com" class="social-btn" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <h2 class="work-heading">Work showcase</h2>
+
+            <div class="work-carousel hidden" id="workCarousel" aria-label="Work showcase">
+                <div class="work-carousel-viewport">
+                    <div class="work-carousel-track" id="workCarouselTrack"></div>
+                    <button type="button" class="work-carousel-btn prev" id="carouselPrev" aria-label="Previous image">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="button" class="work-carousel-btn next" id="carouselNext" aria-label="Next image">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="work-carousel-dots" id="workCarouselDots"></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="toast" id="toast" role="status"></div>
+
+    <script>
+        (function () {
+            // Showcase images (update paths if you add more work)
+            var workImages = [
+                "../assets/images/a320-work-1.png",
+                "../assets/images/a320-work-2.png",
+                "../assets/images/a320-work-3.png",
+                "../assets/images/a320-work-4.png",
+                "../assets/images/a320-work-5.png",
+                "../assets/images/a320-work-6.png"
+            ];
+
+            function createParticles() {
+                var container = document.getElementById("particles");
+
+                for (var i = 0; i < 22; i++) {
+                    var el = document.createElement("span");
+                    el.className = "particle snow";
+                    el.textContent = "❅";
+                    el.style.left = Math.random() * 100 + "%";
+                    el.style.animationDuration = 8 + Math.random() * 14 + "s";
+                    el.style.animationDelay = Math.random() * 10 + "s";
+                    el.style.fontSize = 10 + Math.random() * 10 + "px";
+                    container.appendChild(el);
+                }
+            }
+
+            function showToast(message) {
+                var toast = document.getElementById("toast");
+                toast.textContent = message;
+                toast.classList.add("show");
+                setTimeout(function () {
+                    toast.classList.remove("show");
+                }, 1800);
+            }
+
+            function initCarousel() {
+                var carousel = document.getElementById("workCarousel");
+                var track = document.getElementById("workCarouselTrack");
+                var dotsWrap = document.getElementById("workCarouselDots");
+
+                if (!workImages.length) {
+                    carousel.classList.add("hidden");
+                    return;
+                }
+
+                carousel.classList.remove("hidden");
+                var current = 0;
+                var timer;
+
+                workImages.forEach(function (src, index) {
+                    var slide = document.createElement("div");
+                    slide.className = "work-carousel-slide";
+                    var img = document.createElement("img");
+                    img.src = src;
+                    img.alt = "Work " + (index + 1);
+                    slide.appendChild(img);
+                    track.appendChild(slide);
+
+                    var dot = document.createElement("button");
+                    dot.type = "button";
+                    dot.className = "work-carousel-dot" + (index === 0 ? " active" : "");
+                    dot.setAttribute("aria-label", "Go to image " + (index + 1));
+                    dot.addEventListener("click", function () {
+                        goTo(index);
+                        resetTimer();
+                    });
+                    dotsWrap.appendChild(dot);
+                });
+
+                function goTo(index) {
+                    current = (index + workImages.length) % workImages.length;
+                    track.style.transform = "translateX(-" + current * 100 + "%)";
+                    dotsWrap.querySelectorAll(".work-carousel-dot").forEach(function (dot, i) {
+                        dot.classList.toggle("active", i === current);
+                    });
+                }
+
+                function resetTimer() {
+                    clearInterval(timer);
+                    if (workImages.length > 1) {
+                        timer = setInterval(function () {
+                            goTo(current + 1);
+                        }, 4000);
+                    }
+                }
+
+                document.getElementById("carouselPrev").addEventListener("click", function () {
+                    goTo(current - 1);
+                    resetTimer();
+                });
+
+                document.getElementById("carouselNext").addEventListener("click", function () {
+                    goTo(current + 1);
+                    resetTimer();
+                });
+
+                resetTimer();
+            }
+
+            document.querySelectorAll(".copy-btn").forEach(function (btn) {
+                btn.addEventListener("click", function () {
+                    var value = btn.getAttribute("data-copy") || "";
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(value).then(function () {
+                            btn.classList.add("copied");
+                            showToast("Copied to clipboard");
+                            setTimeout(function () { btn.classList.remove("copied"); }, 1200);
+                        });
+                    } else {
+                        showToast(value);
+                    }
+                });
+            });
+
+            createParticles();
+            initCarousel();
+        })();
+    </script>
+</body>
+</html>
