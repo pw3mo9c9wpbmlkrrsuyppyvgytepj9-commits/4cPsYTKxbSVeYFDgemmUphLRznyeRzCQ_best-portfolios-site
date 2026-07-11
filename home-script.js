@@ -4,89 +4,89 @@ const portfolios = [
         name: "Kaiden Carr",
         title: "Full Stack Developer",
         bio: "Passionate about building web applications with modern technologies.",
-        image: "./assets/images/profile-kaiden-carr.png",
-        tags: ["JavaScript", "Python", "React", "HTML", "CSS"],
-        portfolioUrl: "/carrkaiden1212"
+        image: "./assets/images/profiles/profile-kaiden-carr.png",
+        tags: ["JavaScript", "Python", "HTML", "CSS"],
+        portfolioUrl: "/portfolios/carrkaiden1212"
     },
     {
         name: "Antony Hallick",
         title: "Professional with Diverse Industry Experience",
         bio: "Professional with extensive experience across multiple industries including roofline products, aluminium manufacturing, and furniture.",
-        image: "./assets/images/profile-antony-hallick.png",
-        tags: ["Manufacturing", "Aluminium", "Technical", "Operations"],
-        portfolioUrl: "/Antony_Hallick"
+        image: "./assets/images/profiles/profile-antony-hallick.png",
+        tags: ["Manufacturing", "Aluminium", "Operations"],
+        portfolioUrl: "/portfolios/Antony_Hallick"
     },
     {
         name: "Mason",
         title: "Discord Design Expert",
         bio: "Ensuring YOUR discord servers are what you need. Top Qualities, Cheap Prices. Specializing in community, design, department, and content creation.",
-        image: "./assets/images/profile-mason.png",
+        image: "./assets/images/profiles/profile-mason.png",
         tags: ["Discord", "Design", "Community"],
-        portfolioUrl: "/Mason"
+        portfolioUrl: "/portfolios/Mason"
     },
     {
         name: "Dudwig",
         title: "Design Specialist",
         bio: "Creative designer specializing in clothing design and Discord embeds with innovative design solutions.",
-        image: "./assets/images/profile-dudwig.png",
+        image: "./assets/images/profiles/profile-dudwig.png",
         tags: ["Design", "Clothing", "Embeds"],
-        portfolioUrl: "/Dudwig"
+        portfolioUrl: "/portfolios/Dudwig"
     },
     {
         name: "__nicow",
         title: "Design Specialist",
         bio: "This is your about me",
-        image: "./assets/images/__nicow.webp",
+        image: "./assets/images/profiles/profile-__nicow.webp",
         tags: ["Design", "Banners", "Discord"],
-        portfolioUrl: "/__nicow"
+        portfolioUrl: "/portfolios/__nicow"
     },
     {
         name: "Leo Sicolo",
         title: "IT Professional & 3D Printing Enthusiast",
         bio: "Passionate about IT field and 3D printing. Experienced in IT work and camp counseling with relevant qualifications.",
-        image: "./assets/images/profile-leo-sicolo.png",
+        image: "./assets/images/profiles/profile-leo-sicolo.png",
         tags: ["IT", "3D Printing", "Technology"],
-        portfolioUrl: "/Leo_Sicolo"
+        portfolioUrl: "/portfolios/Leo_Sicolo"
     },
     {
         name: "yescat",
         title: "Design Specialist",
         bio: "Design specialist with extensive experience moderating 5+ servers and building 2 successful Discord communities from the ground up.",
-        image: "./assets/images/profile-yescat.png",
+        image: "./assets/images/profiles/profile-yescat.png",
         tags: ["Discord", "Design", "Leadership"],
-        portfolioUrl: "/yescat"
+        portfolioUrl: "/portfolios/yescat"
     },
     {
         name: "myfloweralla",
         title: "Designer & Creative Experimenter",
         bio: "I enjoy designing and experimenting with new things. Creating and discovering new possibilities is what motivates me the most.",
-        image: "./assets/images/profile-myfloweralla.png",
+        image: "./assets/images/profiles/profile-myfloweralla.png",
         tags: ["Design", "Creative", "Discord"],
-        portfolioUrl: "/myfloweralla"
+        portfolioUrl: "/portfolios/myfloweralla"
     },
     {
         name: "FluffyChick458",
         title: "Server Owner & Community Manager",
         bio: "Experienced server owner and community manager with a proven track record of building and maintaining successful Discord communities.",
-        image: "./assets/images/profile-fluffy.png",
+        image: "./assets/images/profiles/profile-fluffy.png",
         tags: ["Server Owner", "Management", "Community"],
-        portfolioUrl: "/FluffyChick458"
+        portfolioUrl: "/portfolios/FluffyChick458"
     },
     {
         name: "denji",
         title: "Video & Gameplay Editor",
         bio: "Anime edits, gaming montages, Minecraft server design, and Discord community management.",
-        image: "./assets/images/denji.notfound.webp",
-        tags: ["Video Editing", "Minecraft", "Discord", "Gaming"],
-        portfolioUrl: "/toxiqxprime"
+        image: "./assets/images/profiles/profile-denji.png",
+        tags: ["Video Editing", "Minecraft", "Discord"],
+        portfolioUrl: "/portfolios/toxiqxprime"
     },
     {
         name: "a320_",
         title: "Discord Server Builder",
         bio: "I make professional discord servers for free.",
-        image: "./assets/images/a320.webp",
+        image: "./assets/images/profiles/profile-a320.webp",
         tags: ["Discord", "Server Design", "United Kingdom"],
-        portfolioUrl: "/a320_"
+        portfolioUrl: "/portfolios/a320"
     }
 ];
 
