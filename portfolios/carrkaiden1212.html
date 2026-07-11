@@ -10,11 +10,11 @@
     <meta property="og:url" content="https://www.best-portfolios.com/carrkaiden1212">
     <meta property="og:title" content="Kaiden Carr - Full Stack Developer">
     <meta property="og:description" content="Passionate about building web applications with modern technologies.">
-    <meta property="og:image" content="https://www.best-portfolios.com/assets/images/profile-kaiden-carr.png">
+    <meta property="og:image" content="https://www.best-portfolios.com/assets/images/profiles/profile-kaiden-carr.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Kaiden Carr - Full Stack Developer">
     <meta name="twitter:description" content="Passionate about building web applications with modern technologies.">
-    <meta name="twitter:image" content="https://www.best-portfolios.com/assets/images/profile-kaiden-carr.png">
+    <meta name="twitter:image" content="https://www.best-portfolios.com/assets/images/profiles/profile-kaiden-carr.png">
     <title>Portfolio - Kaiden Carr</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -87,7 +87,6 @@
         }
         .about-text h2 { text-align: center; }
         .about-text p { line-height: 1.8; opacity: 0.9; margin-bottom: 16px; margin-left: auto; margin-right: auto; }
-        .proj-dir-panel .panel-body { padding: 0; }
         .proj-dir-layout { display: grid; grid-template-columns: 160px 220px 1fr; min-height: 340px; }
         .proj-categories {
             border-right: 1px solid var(--border);
@@ -268,50 +267,33 @@
         .exp-detail-foot a { color: var(--pink); font-size: 1.2rem; text-decoration: none; }
         .exp-detail-foot a:hover { color: var(--cyan); }
         .exp-hint { font-size: 11px; color: #6e7681; font-family: 'JetBrains Mono', monospace; padding: 8px 12px 0; }
-        #contact .panel { max-width: 620px; margin-left: auto; margin-right: auto; overflow: hidden; }
-        .contact-panel {
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: center;
-            overflow: hidden;
-        }
-        .contact-panel h2,
-        .contact-panel .section-subtitle { text-align: center; }
-        .contact-panel form {
-            text-align: left;
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
-        }
-        .contact-panel .btn-neon { width: 100%; max-width: 100%; margin-top: 4px; margin-right: 0; }
-        form input, form textarea {
-            display: block;
-            width: 100%;
-            max-width: 100%;
-            min-width: 0;
-            padding: 12px;
-            margin-bottom: 12px;
-            background: #0d1117;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            color: #e2e8f0;
+        .proj-url { margin-bottom: 10px; }
+        .proj-url a {
+            color: var(--cyan);
             font-family: 'JetBrains Mono', monospace;
-            font-size: 13px;
-            box-sizing: border-box;
+            font-size: 12px;
+            text-decoration: none;
+            word-break: break-all;
         }
-        form textarea {
-            resize: vertical;
-            min-height: 120px;
-            max-height: 280px;
-            overflow-x: hidden;
-            overflow-y: auto;
+        .proj-url a:hover { color: var(--pink); }
+        .proj-visit { margin-top: 12px; font-size: 11px; padding: 8px 14px; }
+        .proj-warning {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            background: rgba(254, 188, 46, 0.12);
+            border: 1px solid rgba(254, 188, 46, 0.5);
+            color: #fbbf24;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
         }
-        form input:focus, form textarea:focus { border-color: var(--green); outline: none; }
-        form input::placeholder, form textarea::placeholder { color: #6e7681; }
-        .social { display: flex; gap: 12px; margin-top: 24px; justify-content: center; }
-        .social a { width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--cyan); text-decoration: none; background: var(--glass); transition: 0.2s; }
-        .social a:hover { background: rgba(34,211,238,0.15); color: var(--pink); }
+        .proj-warning i { flex-shrink: 0; }
         footer { text-align: center; padding: 24px 0 36px; color: #8b949e; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
         @media (max-width: 900px) {
             .proj-dir-layout { grid-template-columns: 1fr; }
@@ -340,7 +322,6 @@
             <a href="#about">about</a>
             <a href="#projects">projects</a>
             <a href="#experiences">experience</a>
-            <a href="#contact">contact</a>
         </div>
     </nav>
 
@@ -355,8 +336,6 @@
                             <h1>Hello, I'm <span>Kaiden Carr</span></h1>
                             <p class="hero-sub">Full Stack Developer</p>
                             <p class="code-line"><span class="k">export const</span> <span class="s">focus</span> = <span class="s">"bots · apps · communities"</span>;</p>
-                            <a href="#projects" class="btn btn-neon">View My Work</a>
-                            <a href="#contact" class="btn btn-outline">Get In Touch</a>
                         </div>
                         <div class="stats-row">
                             <div class="stat-glass"><strong>34+</strong><span>Projects Completed</span></div>
@@ -373,8 +352,8 @@
                 <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">about.md</span></div>
                 <div class="panel-body about-text">
                     <h2>about me</h2>
-                    <p>Hey, I'm a passionate developer who loves working with JavaScript and Python. I can design and build just about anything you need. I got into programming by teaching myself different languages when I was bored one day, and now I run a development and design community.</p>
-                    <p>Whether it's automating tasks with scripts, creating interactive Discord bots, developing Python apps, or crafting Minecraft mods, I'm dedicated to delivering products to your standard.</p>
+                    <p>Hey, I'm a passionate developer who works with JavaScript mainly but also works with Python. I can design and build just about anything you need. I got into programming by teaching myself different languages when I was bored one day, and now I run a development and design community.</p>
+                    <p>Whether it's creating Discord servers, interactive Discord bots, or developing apps, I'm dedicated to delivering products to your standard.</p>
                 </div>
             </div>
         </section>
@@ -386,8 +365,10 @@
                 <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">~/projects</span></div>
                 <div class="proj-dir-layout">
                     <div class="proj-categories" role="tablist" aria-label="Project categories">
-                        <button type="button" class="proj-cat active" data-cat="apps" role="tab" aria-selected="true">Apps <span class="count">2</span></button>
+                        <button type="button" class="proj-cat active" data-cat="apps" role="tab" aria-selected="true">Apps <span class="count">3</span></button>
                         <button type="button" class="proj-cat" data-cat="bots" role="tab" aria-selected="false">Bots <span class="count">1</span></button>
+                        <button type="button" class="proj-cat" data-cat="websites" role="tab" aria-selected="false">Websites <span class="count">1</span></button>
+                        <button type="button" class="proj-cat" data-cat="discord" role="tab" aria-selected="false">Discord <span class="count">3</span></button>
                     </div>
                     <div class="proj-files" id="projFiles" role="tablist" aria-label="Projects in category"></div>
                     <div class="proj-detail-wrap" id="projDetail" role="tabpanel"></div>
@@ -410,7 +391,7 @@
                             <span class="co">Nova Designs</span>
                         </button>
                         <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="2">
-                            <div class="exp-row-top"><h3>Designer to Executive</h3><span class="date">2025-2026</span></div>
+                            <div class="exp-row-top"><h3>Owner</h3><span class="date">2025-2026</span></div>
                             <span class="co">Vexira Customs</span>
                         </button>
                         <button type="button" class="exp-row" role="tab" aria-selected="false" data-exp="3">
@@ -427,27 +408,6 @@
                         </button>
                     </div>
                     <div class="exp-detail" id="expDetail" role="tabpanel"></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contact">
-            <div class="panel">
-                <div class="panel-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="path">contact.form</span></div>
-                <div class="panel-body contact-panel">
-                    <h2>Contact Me</h2>
-                    <p class="section-subtitle">Feel free to reach out for collaborations or just a friendly hello!</p>
-                    <form action="https://formspree.io/f/xnjllgpz" method="POST">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn btn-neon">Send Message</button>
-                    </form>
-                    <div class="social">
-                        <a href="https://www.tiktok.com/@Carrkaiden1212" title="TikTok" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://discord.gg/Cu7tQ9Ycr5" title="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
-                        <a href="mailto:support@nexa-core.net" title="Email"><i class="fas fa-envelope"></i></a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -627,6 +587,26 @@
                 ]
             },
             {
+                id: 'blackbook',
+                title: 'Blackbook Order App',
+                path: 'blackbook-app/',
+                categories: ['apps'],
+                desc: 'This is a order app I made in React, it has a variety of features, that all function. It has stuff like tracking orders, clients, deadlines, revenues, and more. You are able to automitically send messages to clients when their order status changes.',
+                tags: ['App', 'React', 'Orders'],
+                images: [
+                    '../assets/images/carrkaiden1212-work-blackbook2.png',
+                    '../assets/images/carrkaiden1212-work-blackbook3.png',
+                    '../assets/images/carrkaiden1212-work-blackbook4.png',
+                    '../assets/images/carrkaiden1212-work-blackbook5.png',
+                    '../assets/images/carrkaiden1212-work-blackbook6.png',
+                    '../assets/images/carrkaiden1212-work-blackbook7.png',
+                    '../assets/images/carrkaiden1212-work-blackbook8.png',
+                    '../assets/images/carrkaiden1212-work-blackbook9.png',
+                    '../assets/images/carrkaiden1212-work-blackbook10.png',
+                    '../assets/images/carrkaiden1212-work-blackbook11.png',
+                ]
+            },
+            {
                 id: 'orderbot',
                 title: 'Discord Order Bot',
                 path: 'order-bot/',
@@ -635,6 +615,115 @@
                 tags: ['Discord', 'Bot', 'JavaScript'],
                 media: [
                     { type: 'video', src: '../assets/files/orderbot.mp4' }
+                ]
+            },
+            {
+                id: 'online-orderbot',
+                title: 'Online to Discord Order Bot',
+                path: 'online-order-bot/',
+                categories: ['bots'],
+                desc: 'Online order management bot. Create orders online, this will place a order in the Discord through the bot. It has stuff like, a live chat, status updates, order protection.',
+                tags: ['Online', 'Bot', 'JavaScript'],
+                media: [
+                    { type: 'video', src: '../assets/files/carrkaiden1212-online-order-bot1.mp4' }
+                ]
+            },
+            {
+                id: 'music-bot',
+                title: 'Music Bot',
+                path: 'music-bot/',
+                categories: ['bots'],
+                desc: 'Music bot. This bot has a variety of features, that all function. It has stuff like, playing music, pausing music, skipping music, and more.',
+                tags: ['Music', 'Bot', 'JavaScript'],
+                images: [
+                    '../assets/images/carrkaiden1212-work-musicbot1.png',
+                    '../assets/images/carrkaiden1212-work-musicbot2.png',
+                    '../assets/images/carrkaiden1212-work-musicbot3.png',
+                    '../assets/images/carrkaiden1212-work-musicbot4.png',
+                    '../assets/images/carrkaiden1212-work-musicbot5.png',
+                    '../assets/images/carrkaiden1212-work-musicbot6.png',
+                    '../assets/images/carrkaiden1212-work-musicbot7.png',
+                    '../assets/images/carrkaiden1212-work-musicbot8.png',
+                    '../assets/images/carrkaiden1212-work-musicbot9.png'
+                ]
+            },
+            {
+                id: 'best-portfolios',
+                title: 'best-portfolios',
+                path: 'best-portfolios/',
+                categories: ['websites'],
+                desc: 'A website that hosts portfolios of various creators and designers.',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Vercel'],
+                url: 'https://www.best-portfolios.com'
+            },
+            {
+                id: 'nexa-core',
+                title: 'NexaCore',
+                path: 'nexa-core/',
+                categories: ['websites'],
+                desc: 'My business website with a product directory, order placement, staff portfolios, and an FAQ page.',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Business'],
+                url: 'https://nexa-core.net',
+                images: ['../assets/images/kc-nexacore-preview.png']
+            },
+            {
+                id: 'moonlight-hosting',
+                title: 'Moonlight Hosting',
+                path: 'moonlight-hosting/',
+                categories: ['websites'],
+                desc: 'A client hosting platform with a dashboard, home page, FAQ, help centre, and tools to manage hosting for customers. Service has since shut down.',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Hosting', 'Discontinued'],
+                url: 'https://www.moonlighthost.win/',
+                images: ['../assets/images/kc-moonlight-preview.png']
+            },
+            {
+                id: 'shard-hosting',
+                title: 'Shard Hosting',
+                path: 'shard-hosting/',
+                categories: ['websites'],
+                desc: 'Hosting website for Shard Hosting with secure login, hosting dashboard, game and other hosting options, and support pages. Still under development.',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Hosting', 'In Progress'],
+                url: 'https://www.shardhosting.xyz/login.html',
+                images: ['../assets/images/kc-shardhosting-preview.png'],
+                warning: 'Maintainance'
+            },
+            {
+                id: 'axentra-server',
+                title: 'Axentra Server',
+                path: 'axentra-server/',
+                categories: ['discord'],
+                desc: 'Discord server layout with welcome, support, community, staff, development, and logging channels — organized structure with emojis, permissions, and channel grouping.',
+                tags: ['Discord', 'Server Design', 'Community'],
+                images: [
+                    '../assets/images/kc-discord-axentra-1.png',
+                    '../assets/images/kc-discord-axentra-2.png'
+                ]
+            },
+            {
+                id: 'nexacore-server',
+                title: 'NexaCore Server',
+                path: 'nexacore-server/',
+                categories: ['discord'],
+                desc: 'NexaCore Discord server with welcome and info, support tickets, news and announcements, community channels, staff team areas, HR sections, logging, and order categories for Discord, website, and other services.',
+                tags: ['Discord', 'Server Design', 'NexaCore'],
+                images: [
+                    '../assets/images/kc-discord-nexacore-1.png',
+                    '../assets/images/kc-discord-nexacore-2.png',
+                    '../assets/images/kc-discord-nexacore-3.png'
+                ]
+            },
+            {
+                id: 'vexira-customs-server',
+                title: 'Vexira Customs Server',
+                path: 'vexira-customs-server/',
+                categories: ['discord'],
+                desc: 'Vexira Customs Discord server with welcome and verification, announcements, ordering and marketplace channels, community areas, staff backend, HR section, logging, and order categories for liveries, graphics, Discord, ELS, photography, and uniforms.',
+                tags: ['Discord', 'Server Design', 'Vexira Customs'],
+                images: [
+                    '../assets/images/kc-discord-vexira-1.png',
+                    '../assets/images/kc-discord-vexira-2.png',
+                    '../assets/images/kc-discord-vexira-3.png',
+                    '../assets/images/kc-discord-vexira-4.png'
                 ]
             }
         ];
@@ -664,6 +753,15 @@
             }
             var mediaHtml = buildMediaHtml(project);
             var tagsHtml = project.tags.map(function (t) { return '<span class="tag">' + t + '</span>'; }).join('');
+            var urlHtml = project.url
+                ? '<p class="proj-url"><a href="' + project.url + '" target="_blank" rel="noopener">' + project.url + '</a></p>'
+                : '';
+            var visitHtml = project.url
+                ? '<a href="' + project.url + '" class="btn btn-outline proj-visit" target="_blank" rel="noopener">Visit site</a>'
+                : '';
+            var warningHtml = project.warning
+                ? '<p class="proj-warning"><i class="fas fa-triangle-exclamation"></i> ' + project.warning + '</p>'
+                : '';
             projDetailEl.innerHTML =
                 '<div class="panel-head" style="margin:-20px -24px 16px;border-radius:0;">' +
                     '<span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>' +
@@ -673,8 +771,11 @@
                     '<div class="carousel">' + mediaHtml + '</div>' +
                     '<div>' +
                         '<h3>' + project.title + '</h3>' +
+                        warningHtml +
+                        urlHtml +
                         '<p class="proj-desc">' + project.desc + '</p>' +
                         '<div>' + tagsHtml + '</div>' +
+                        visitHtml +
                     '</div>' +
                 '</div>';
             initCarousel(projDetailEl.querySelector('.carousel'));
@@ -695,7 +796,10 @@
                 btn.setAttribute('data-id', project.id);
                 btn.setAttribute('role', 'tab');
                 btn.setAttribute('aria-selected', project.id === activeProjectId ? 'true' : 'false');
-                btn.innerHTML = '<i class="fas fa-folder"></i>' + project.path;
+                var icon = 'fas fa-folder';
+                if (project.categories.indexOf('websites') !== -1) icon = 'fas fa-globe';
+                else if (project.categories.indexOf('discord') !== -1) icon = 'fab fa-discord';
+                btn.innerHTML = '<i class="' + icon + '"></i>' + project.path;
                 btn.addEventListener('click', function () {
                     activeProjectId = project.id;
                     projFilesEl.querySelectorAll('.proj-file').forEach(function (f) {
@@ -788,7 +892,7 @@
                 discord: 'https://discord.gg/MNwWprwjkH'
             },
             {
-                title: 'Designer to Executive',
+                title: 'Owner',
                 company: 'Vexira Customs',
                 date: '2025-2026',
                 desc: 'Started as designer for livery and Discord bots using JavaScript and Python. Progressed to Executive role in the community.',
