@@ -169,6 +169,11 @@
             border: 1px solid rgba(34,211,238,0.3); background: #000;
             cursor: zoom-in;
         }
+        .carousel.discord-carousel {
+            aspect-ratio: unset;
+            height: min(520px, 70vh);
+            background: #1e1e2e;
+        }
         .carousel::after {
             content: 'Click to expand';
             position: absolute; bottom: 8px; right: 10px;
@@ -185,6 +190,19 @@
             pointer-events: none;
         }
         .carousel-slide.active { opacity: 1; pointer-events: auto; }
+        .discord-carousel .carousel-slide {
+            inset: unset;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            object-fit: contain;
+            object-position: center;
+        }
         .carousel video.carousel-slide { background: #000; }
         .lightbox {
             display: none; position: fixed; inset: 0; z-index: 3000;
@@ -762,13 +780,15 @@
             var warningHtml = project.warning
                 ? '<p class="proj-warning"><i class="fas fa-triangle-exclamation"></i> ' + project.warning + '</p>'
                 : '';
+            var isDiscord = project.categories.indexOf('discord') !== -1;
+            var carouselClass = isDiscord ? 'carousel discord-carousel' : 'carousel';
             projDetailEl.innerHTML =
                 '<div class="panel-head" style="margin:-20px -24px 16px;border-radius:0;">' +
                     '<span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>' +
                     '<span class="path">' + project.path + '</span>' +
                 '</div>' +
                 '<div class="proj-detail-body">' +
-                    '<div class="carousel">' + mediaHtml + '</div>' +
+                    '<div class="' + carouselClass + '">' + mediaHtml + '</div>' +
                     '<div>' +
                         '<h3>' + project.title + '</h3>' +
                         warningHtml +
